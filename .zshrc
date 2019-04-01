@@ -76,6 +76,8 @@ autoload -U compinit
 compinit
 bindkey "^?" backward-delete-char
 bindkey '^[OH' beginning-of-line
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 bindkey '^[OF' end-of-line
 bindkey '^[[5~' up-line-or-history
 bindkey '^[[6~' down-line-or-history
@@ -84,6 +86,9 @@ bindkey "^[[B" history-beginning-search-forward-end
 bindkey "^r" history-incremental-search-backward
 bindkey ' ' magic-space    # also do history expansion on space
 bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+bindkey '^[[3~' delete-char
+
+
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
@@ -164,3 +169,8 @@ zstyle '*' single-ignored show
 ### Source plugins
 ##################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+[[ -f /etc/profile.d/vte.sh ]] && . /etc/profile.d/vte.sh
+
+alias cq='cd ~/Projects/CQ/'
